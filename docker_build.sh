@@ -15,5 +15,6 @@ docker push $AWS_CONTAINER_REGISTRY/$REPOSITORY:$TAG
 #kubectl rolling-update $REPOSITORY --image-pull-policy=Always --image $AWS_CONTAINER_REGISTRY/$REPOSITORY:$TAG
 kubectl set image deployment/$REPOSITORY $REPOSITORY=$AWS_CONTAINER_REGISTRY/$REPOSITORY:$TAG
 kubectl rollout status deployment/$REPOSITORY
+kubectl delete pods -l name=apiway-smtp
 
 rm -f ecr_login.sh
